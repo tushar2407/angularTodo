@@ -13,7 +13,6 @@
     border-radius: 4px;
     overflow: hidden;
     display: block;
-    
   }
   
   .example-box {
@@ -53,3 +52,10 @@
   .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
+  input[type=text]{
+    background-color: rgba(0, 0, 0, 0.01);
+    border-radius: 5%;
+    border-width: 0.1px;
+    color:gray !important;
+  }
+  

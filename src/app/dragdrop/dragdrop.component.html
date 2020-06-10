@@ -27,6 +27,25 @@
   </div>
 </div>
 <p>{{to_do | json}}</p>-->
+<style>
+  button:hover{
+    color:yellow;
+    background-color: blue;
+    cursor:grab;
+    transition: 1s ease-in-out;
+  }
+</style>
+<form novalidate [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input  matInput formControlName="name" placeholder="To Do Task" type="text" name="taskName">
+    <mat-error *ngIf="formErrors.todoTask">
+      {{formErrors.todoTask}}
+    </mat-error>
+  </mat-form-field>
+  <br>
+  <button type="submit" mat-button [disabled]="this.todoForm.invalid">Add</button>
+  <hr>
+</form>
 <div class="example-container">
     <h2 style="color:#ccc">To do</h2>
   
@@ -37,7 +56,7 @@
       [cdkDropListConnectedTo]="[doneList]"
       class="example-list"
       (cdkDropListDropped)="dropped($event)">
-      <div class="example-box" *ngFor="let item of to_do" [cdkDragData]="item" cdkDrag>{{item}}</div>
+      <div class="example-box" *ngFor="let item of to_do" [cdkDragData]="item" cdkDrag>{{item.name}}</div>
     </div>
   </div>
   
@@ -51,6 +70,6 @@
       [cdkDropListConnectedTo]="[todoList]"
       class="example-list"
       (cdkDropListDropped)="dropped($event)">
-      <div class="example-box" *ngFor="let item of done" [cdkDragData]="item"   cdkDrag>{{item}}</div>
+      <div class="example-box" *ngFor="let item of done" [cdkDragData]="item"   cdkDrag><p style="text-decoration: line-through;">{{item.name}}</p></div>
     </div>
   </div>
